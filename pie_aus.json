@@ -1,0 +1,57 @@
+{
+  	"$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  	"background": "#e9eef1",
+  	"title": "Australia",
+	"description": "A simple pie chart with embedded data.",
+ 	"width": 200,
+  	"height": 150,
+	"config": {
+        "view": {"stroke": "transparent"}    
+    },
+	"data": {
+	"url": "rated_player_count.csv",
+	"format": {"type": "csv"}
+	},
+	"layer": [
+		{
+			"mark": {"type": "arc", "innerRadius": 20, "stroke": "#ffffff"}
+		}
+	],
+  	"transform": [
+		{
+        	"calculate": "datum.total_player_count - datum.all_master_player_count",
+        	"as": "non_master_player_count"
+    	},
+    	{
+        	"calculate": "datum.all_master_player_count / datum.total_player_count",
+        	"as": "master_player_percentage"
+    	},
+		{
+			"calculate": "datum.non_master_player_count / datum.total_player_count",
+			"as": "non_master_player_percentage"
+		},
+    	{
+        	"filter": "datum.Country == 'Australia'"
+    	},
+    	{
+        	"fold": ["all_master_player_count", "non_master_player_count"],
+        	"as": ["category", "value"]
+    	}
+
+  	],
+  	"encoding": {
+    	"theta": {"field": "value", "type": "quantitative"},
+		"radius": {"field": "value", "type": "quantitative", "scale": {"type": "sqrt", "zero": true, "rangeMin": 20}},
+    	"color": {
+			"field": "category", 
+			"type": "nominal",
+			"legend": {"title": "Player Type", "values": ["all_master_player_count", "non_master_player_count"], "labels": ["Master Players", "Non-Master Players"]}
+		},
+		"tooltip": [
+			{"field": "category", "type": "nominal", "title": "Player Type"},
+			{"field": "value", "type": "quantitative", "title": "Count"},
+			{"field": "master_player_percentage", "type": "quantitative", "title": "Master Player Percentage", "format": ".2%"},
+			{"field": "non_master_player_percentage", "type": "quantitative", "title": "Non-Master Player Percentage", "format": ".2%"}
+		]
+  	}
+}

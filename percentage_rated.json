@@ -1,8 +1,12 @@
 {
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "background": "#e9eef1",
     "data": {"url": "rated_player_count.csv"},
     "width": 1000,
     "height": 400,
+    "config": {
+        "view": {"stroke": "transparent"}    
+    },
     "title": "percentage_rated",
     "mark": "bar",
     "transform": [

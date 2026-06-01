@@ -1,8 +1,12 @@
 {
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "background": "#e9eef1",
     "title": "Male titled players by country (grouped by title)",
-    "width": 600,
-    "height": 420,
+    "width": 700,
+    "height": 220,
+    "config": {
+        "view": {"stroke": "transparent"}    
+    },
     "data": {
         "url": "rated_player_count.csv",
         "format": {"type": "csv"}
@@ -16,26 +20,53 @@
             "filter": "indexof(['Russia', 'India', 'United States of America', 'China', 'Poland', 'Germany', 'Australia'], datum.Country) >= 0"
         }
     ],
-    "mark": {"type": "bar"},
+    "layer": [
+        {
+            "mark": {"type": "bar", "size": 2},
+            "encoding": {
+                "xOffset": {
+                    "field": "Title",
+                    "sort": ["CM_count","FM_count","IM_count","GM_count"]
+                }
+            }
+        },
+        {
+            "mark": {"type": "circle"},
+            "encoding": {
+                "xOffset": {
+                    "field": "Title",
+                    "sort": ["CM_count","FM_count","IM_count","GM_count"]
+                }
+            }
+        },
+        {
+            "mark": {"type": "text", "dy": -10, "fontSize": 10},
+            "encoding": {
+                "text": {"field": "Count", "type": "quantitative"},
+                "xOffset": {
+                    "field": "Title",
+                    "sort": ["CM_count","FM_count","IM_count","GM_count"]
+                }
+            }
+        }
+    ],
     "encoding": {
         "x": {
             "field": "Country",
             "type": "nominal",
-            "axis": {"labelOverlap": "parity"}
+            "axis": {
+                "labelAngle": 0
+            }
         },
         "y": {
             "field": "Count", 
             "type": "quantitative", 
-            "axis": {"title": "Count"}
+            "axis": {"title": "Count", "titleAngle": 0, "titleX": -40}
         },
         "color": {
             "field": "Title", 
             "type": "nominal", 
             "legend": {"title": "Title"}, 
-            "sort": ["CM_count","FM_count","IM_count","GM_count"]
-        },
-        "xOffset": {
-            "field": "Title",
             "sort": ["CM_count","FM_count","IM_count","GM_count"]
         },
         "tooltip": [
