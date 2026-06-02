@@ -1,7 +1,7 @@
 {
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
     "background": "#e9eef1",
-    "title": "Male titled players by country (grouped by title)",
+    "title": "Titled players by country (grouped by title)",
     "width": 580,
     "height": 220,
     "config": {
