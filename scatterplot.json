@@ -2,8 +2,8 @@
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
     "background": "#e9eef1",
     "data": {"url": "rated_player_count.csv"},
-    "width": 250,
-    "height": 250,
+    "width": 220,
+    "height": 220,
     "mark": "square",
     "transform": [
         {"filter": "datum.population > 0 && datum.all_master_player_count > 0 && datum.rating_average > 0"}
@@ -33,7 +33,7 @@
             "type": "quantitative",
             "scale": {
                 "type": "threshold",
-                "domain": [1800, 2000, 2100, 2200, 2300],
+                "domain": [2000, 2100, 2200, 2300, 2400],
                 "scheme": "yelloworangered"
             },
             "legend": {"title": "Average Rating"}

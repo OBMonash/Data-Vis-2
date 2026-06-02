@@ -71,3 +71,22 @@ body {
   font-weight: 400;
   font-style: normal;
 }
+
+#checkerboard_bg {
+  position: relative;
+  overflow: hidden;
+}
+
+#checkerboard_bg::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: inherit; /* or use the same bg you want blurred */
+  filter: blur(20px);
+  z-index: 0;
+}
+
+#checkerboard_bg > .inner {
+  position: relative;
+  z-index: 1;
+}
