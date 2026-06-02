@@ -39,7 +39,8 @@
     <div class="pure-g" style="padding: 20px;">
         <div class="pure-u-md-1-3" id="description">
             <h2>Introduction</h2>
-            <p>The International Chess Federation ranks players based on their performance in official tournaments. After meeting certain criteria, players can earn titles such as Grandmaster, International Master, and FIDE Master. This visualisation shows the distribution of these titled players across different countries, with a particular focus on Australia.</p>
+            <p>The International Chess Federation ranks players based on their performance in official tournaments. After meeting certain criteria, players can earn titles such as Grandmaster, International Master, and FIDE Master. 
+                This visualisation shows the distribution of these titled players across different countries, with a particular focus on Australia.</p>
             <p>For the most part, the number of total players scales by the country's population. However, there are a few exceptions in countries with a rich historical background in chess, and in those with a generally poorer population.</p>
         </div>
         <div class="pure-u-md-2-3" id="chorepleth_map"></div>
@@ -47,7 +48,11 @@
         <div class="pure-u-md-1-3" id="scatterplot"></div>
         <div class="pure-u-md-2-3" id="scatterplot_description">
             <h2>Population vs. Rating</h2>
-            <p>The graph on the left shows the positive correlation between population and number of (titled) chess players. </p>
+            <p>The graph on the left shows the very apparent positive correlation between population and number of (titled) chess players. However, it is not very clear when it comes to the average rating of titled players. 
+                There is also a positive correlation between population and average rating, but it is not quite as strong as the correlation between population and number of players. This suggests that while larger 
+                populations may produce more chess players, it does not necessarily lead to higher average ratings among those players.
+            </p>
+            
         </div>
 
         <div class="pure-u-md-1-3" id="pie_aus"></div>
@@ -60,8 +65,9 @@
             </div>
         </div>
         <div class="pure-u-md-1-3" id="pie_description">
-            <h2>Pie Chart Description</h2>
-            <p>The pie charts show the distribution of titled players by title type (e.g., Grandmaster, International Master, etc.) for Australia, the United States, India, Russia, and Germany. Each slice of the pie represents a different title type, and the size of each slice corresponds to the number of players holding that title in the respective country. This allows us to compare the composition of titled players across these countries.</p>
+            <h2>How rare is a titled player?</h2>
+            <p>It seems like the answer depends on where you're from. The range, as suggested by the pie charts, seems to be around 1.5-10% of all people who have ever played a FIDE-sanctioned tournament. </p>
+            <p>It's not quite clear what factors contribute to this variation. The US, for instance, has 5 times less FIDE players than India, but ends up having more titled players.</p>
         </div>
         
         <div class="pure-u-md-2-3" >
@@ -69,8 +75,20 @@
             <div class ="pure-u-md-1-1" id="grouped_lollipop_w"></div>
         </div>
         <div class="pure-u-md-1-3" id="grouped_lollipop_w_description">
-            <h2>Grouped Lollipop Chart Description</h2>
-            <p>The grouped lollipop chart displays the number of titled female chess players in various countries, grouped by title type. Each group of lollipops represents a country, and within each group, the lollipops are colored according to the title type (e.g., Grandmaster, International Master, etc.). The length of each lollipop corresponds to the number of players holding that title in the respective country. This allows us to compare the distribution of titled female chess players across different nations.</p>
+            <h2>More about titled players</h2>
+            <p>The FIDE titles vary according the difficulty of attaining them, with Grandmaster being the highest and Candidate Master being the lowest. There are also women's titles available,
+                 which follow a similar hierarchy. As such, for the most part, the more difficult a title is to attain, the fewer players have it. However, for many of these countries, the role
+                 of the Candidate Master(CM) title and the FIDE Master(FM) title seem to be reversed. Why is that?
+            </p>
+            <p>The CM title was only added in 2002, so for a long time, the easiest to attain was the FM title. Additionally, the criteria for obtaining the FM title is not much higher than 
+                the criteria for obtaining the CM title. As a player, unless you think that the CM title is your peak, it's only logical to pursue the FM title.
+            </p>
+            <p>Australia has a relatively low number of titled players compared to other 1st world countries, but doesn't follow the same CM-FM oddity. Historically, the chess leaders were 
+                mostly from Russia, and as such, has the most titled players, despite having a smaller population than the US and India. 
+            </p>
+            <p>The women's titles follow a similar pattern, with lower overall numbers of titled players. Women have not appeared in the chess competitive scene until recently, so numbers like these
+                are to be expected.
+            </p>
         </div>
 
         <div class="pure-u-md-2-3">
@@ -80,11 +98,26 @@
             </div>
         </div>
         <div class="pure-u-md-1-3" id="dot_plot_description">
-            <h2>Dot Plot Description</h2>
-            <p>The dot plots compare the average ratings of titled chess players in Australia to the global average for each title type. The left plot focuses</p>
+            <h2>Australia's Top Play</h2>
+            <p>Australia is about average when it comes to the average ratings of titled chess players. However, when we compare Australian titled players to their 1st world counterparts, Australia lags
+                behind considerably. However, Australia is on par when it comes to the women's titled players.
+            </p>
+        </div>
+        <div class="pure-u-md-2-3">
+            <h2>How high up is the top?</h2>
+            <p>The typical quality of an Australian GM matches that of other countries. However, when we look at Australia's 
+                highest rated player, Bobby Cheng, we see that he is much closer to the country average than other top 
+                players from 1st world countries. In other countries, we see gaps of 200 to 350 points from the national average. This checks out because chess has never been popular in Australia. 
+                They've never had their own Garry Kasparov or Bobby Fischer.
+            </p>
 
-        <div class="pure-u-md-1-3"></div>
-        <div class="pure-u-md-2-3" id="bar_chart"></div>
+            <h2>Conclusion</h2>
+            <p>Australia's chess scene has a long way to go, as is evident from the data presented here. However, I believe the framework is there and the path forward is clear. You have a set of 
+                Grandmasters who will go on to inspire the next generation of players, and you have a large population of chess players who can be converted into titled players. With the right support 
+                and resources, Australia can go on to produce world-class chess players and compete on the global stage.
+            </p>
+        </div>
+        <div class="pure-u-md-1-3" id="bar_chart"></div>
         
     </div>
     
