@@ -43,4 +43,19 @@ window.addEventListener('DOMContentLoaded', function() {
     vegaEmbed("#scatterplot", vg_9).then(function(result) {
         // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
     }).catch(console.error);
+
+    var vg_10 = "dot_plot_men.json"
+    vegaEmbed("#dot_plot_men", vg_10).then(function(result) {
+        // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+    }).catch(console.error);
+
+    var vg_11 = "dot_plot_women.json"
+    vegaEmbed("#dot_plot_women", vg_11).then(function(result) {
+        // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+    }).catch(console.error);
+
+    var vg_12 = "bar_chart.json"
+    vegaEmbed("#bar_chart", vg_12).then(function(result) {
+        // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+    }).catch(console.error);
 });

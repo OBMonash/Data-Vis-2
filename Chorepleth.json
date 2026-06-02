@@ -1,6 +1,6 @@
 {
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-    "width": 750,
+    "width": 675,
     "height": 250,
     "background": "#e9eef1",
     "config": {
@@ -49,7 +49,7 @@
             "type": "quantitative",
             "scale": {
                 "type": "threshold",
-                "domain": { "signal": "metric == 'all_master_player_count' ? [25,50,100,500,1000] : [50,100,500,1000,5000]" },
+                "domain": { "signal": "metric == 'all_master_player_count' ? [25,50,100,500,1000] : [200, 500, 1000, 5000, 10000]" },
                 "scheme": "redpurple"   
             },
             "legend": {"title": "Number of Players", "type": "symbol", "symbolType": "circle"}

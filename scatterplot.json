@@ -2,14 +2,17 @@
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
     "background": "#e9eef1",
     "data": {"url": "rated_player_count.csv"},
-    "width": 300,
-    "height": 300,
-    "mark": "circle",
+    "width": 250,
+    "height": 250,
+    "mark": "square",
+    "transform": [
+        {"filter": "datum.population > 0 && datum.all_master_player_count > 0 && datum.rating_average > 0"}
+    ],
     "encoding": {
         "x":{
             "field": "population",
             "type": "quantitative",
-            "scale": {"type": "log", "domain": [10000, 1500000000]},
+            "scale": {"type": "log", "domain": [1, 1500000000]},
             "axis": {
                 "title": "Population (log scale)",
                 "tickCount": 5
@@ -18,16 +21,20 @@
         "y":{
             "field": "all_master_player_count",
             "type": "quantitative",
-            "scale": {"type": "linear"},
-            "axis": {"title": "Number of Master Players"}
+            "scale": {"type": "log", "domain": [1, 10000]},
+            "axis": {
+                "title": "Number of Master Players",
+                "tickCount": 4
+            }
         },
-        "size": {
+        
+        "color": {
             "field": "rating_average",
             "type": "quantitative",
             "scale": {
                 "type": "threshold",
                 "domain": [1800, 2000, 2100, 2200, 2300],
-                "range": [10, 50, 100, 150, 200, 250]
+                "scheme": "yelloworangered"
             },
             "legend": {"title": "Average Rating"}
         },

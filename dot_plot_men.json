@@ -1,0 +1,84 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "width": 150,
+    "padding": 5,
+    "background": "#e9eef1",
+    "config": {
+        "view": {"stroke": "transparent"}    
+    },
+    "params": [
+        {
+            "name": "CountrySelection",
+            "value": "",
+            "bind": {
+                "input": "select",
+                "options": ["", "United States of America", "India", "Russia", "Germany", "New Zealand", "China", "Poland"],
+                "labels": ["Average", "United States of America", "India", "Russia", "Germany", "New Zealand", "China", "Poland"],
+                "name": "Select Country: "
+            }
+        }
+    ],
+    "layer": [
+        {
+            "data": {
+                "url": "rated_player_count.csv",
+                "format": {"type": "csv"}
+            },
+            "mark": {"type": "circle", "filled": true, "size": 140},
+            "transform": [
+                {"filter": "datum.Country == 'Australia'"},
+                {"fold": ["CM_rating_average", "FM_rating_average", "IM_rating_average", "GM_rating_average"], "as": ["Title", "AverageRating"]},
+                {"calculate": "'Australia'", "as": "Series"}
+            ],
+            "encoding": {
+                "x": {"field": "AverageRating", "type": "quantitative", "title": "Average Rating"},
+                "y": {"field": "Title", "type": "nominal", "title": "Title", "sort": ["CM_rating_average", "FM_rating_average", "IM_rating_average", "GM_rating_average"]},
+                "tooltip": [
+                    {"field": "Title", "type": "nominal"},
+                    {"field": "AverageRating", "type": "quantitative", "title": "Australia"}
+                ],
+                "color": {
+                    "field": "Series",
+                    "type": "nominal",
+                    "legend": {"title": "Series"},
+                    "scale": {"domain": ["Australia", "Selected"], "range": ["#99047c", "#1f77b4"]}
+                },
+                "xOffset": {"sort": ["CM_rating_average", "FM_rating_average", "IM_rating_average", "GM_rating_average"]}
+            }
+        },
+        {
+            "data": {
+                "url": "rated_player_count.csv",
+                "format": {"type": "csv"}
+            },
+            "mark": {"type": "circle", "filled": true, "size": 90},
+            "transform": [
+                {"fold": ["CM_rating_average", "FM_rating_average", "IM_rating_average", "GM_rating_average"], "as": ["Title", "AverageRating"]},
+                {"calculate": "'Selected'", "as": "Series"}, 
+                {"filter": "CountrySelection === null || CountrySelection === '' || datum.Country == CountrySelection"},
+                {"filter": "datum.AverageRating > 0"},
+                {"aggregate": [{"op": "mean", "field": "AverageRating", "as": "AverageRating"}], "groupby": ["Title", "Series"]}
+            ],
+            "encoding": {
+                "x": {"field": "AverageRating", "type": "quantitative"},
+                "y": {
+                    "field": "Title", 
+                    "type": "nominal", 
+                    "sort": ["CM_rating_average", "FM_rating_average", "IM_rating_average", "GM_rating_average"],
+                    "axis": {"titleAngle": 0, "titleX": -115}
+                },
+                "tooltip": [
+                    {"field": "Title", "type": "nominal"},
+                    {"field": "AverageRating", "type": "quantitative", "title": "Selected"}
+                ],
+                "color": {
+                    "field": "Series",
+                    "type": "nominal",
+                    "legend": {"title": "Series"},
+                    "scale": {"domain": ["Australia", "Selected"], "range": ["#99047c", "#1f77b4"]}
+                },
+                "xOffset": {"sort": ["CM_rating_average", "FM_rating_average", "IM_rating_average", "GM_rating_average"]}
+            }
+        }
+    ]
+}

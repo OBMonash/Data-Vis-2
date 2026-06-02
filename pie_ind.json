@@ -41,7 +41,6 @@
   	],
   	"encoding": {
     	"theta": {"field": "value", "type": "quantitative"},
-		"radius": {"field": "value", "type": "quantitative", "scale": {"type": "sqrt", "zero": true, "rangeMin": 20}},
     	"color": {
 			"field": "category", 
 			"type": "nominal",

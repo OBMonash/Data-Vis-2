@@ -1,0 +1,77 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "background": "#e9eef1",
+    "title": "Distance from highest rated player",
+    "width":270,
+    "height": 150,
+    "config": {
+        "view": {"stroke": "transparent"}    
+    },
+    "layer":[
+        {
+            "data": {
+                "url": "rated_player_count.csv",
+                "format": {"type": "csv"}
+            },
+            "mark": "circle",
+            "transform": [
+                {"filter": "datum.all_master_player_count > 0"},
+                {"filter": "indexof(['Russia', 'India', 'United States of America', 'China', 'Norway', 'Germany', 'Australia'], datum.Country) >= 0"},
+                {"calculate": "'Average rating'", "as": "Series"}
+            ],
+            "encoding": {
+                "x": {"field": "Country", "type": "nominal", "title": "Country"},
+                "y": {"field": "GM_rating_average", "type": "quantitative", "title": "Average Rating"},
+                "color": {"field": "Series", "type": "nominal", "legend": {"title": "Series"}},
+                "tooltip": [
+                    {"field": "Country", "type": "nominal", "title": "Country"},
+                    {"field": "GM_rating_average", "type": "quantitative", "title": "Average Rating"}
+                ]
+            }
+        },
+        {
+            "data": {
+                "url": "rated_player_count.csv",
+                "format": {"type": "csv"}
+            },
+            "mark": "square",
+            "transform": [
+                {"filter": "datum.all_master_player_count > 0"},
+                {"filter": "indexof(['Russia', 'India', 'United States of America', 'China', 'Norway', 'Germany', 'Australia'], datum.Country) >= 0"},
+                {"calculate": "'Highest rating'", "as": "Series"}
+            ],
+            "encoding":{
+                "x": {"field": "Country", "type": "nominal"},
+                "y": {"field": "highest_rating", "type": "quantitative"},
+                "color": {"field": "Series", "type": "nominal"},
+                "tooltip": [
+                    {"field": "Country", "type": "nominal", "title": "Country"},
+                    {"field": "highest_rating", "type": "quantitative", "title": "Highest Rating"},
+                    {"field": "highest_player", "type": "nominal", "title": "Highest Rated Player"}
+                ]
+            }
+        },
+        {
+            "data": {
+                "url": "rated_player_count.csv",
+                "format": {"type": "csv"}
+            },
+            "mark": "rule",
+            "transform":[
+                {"filter": "datum.all_master_player_count > 0"},
+                {"filter": "indexof(['Russia', 'India', 'United States of America', 'China', 'Norway', 'Germany', 'Australia'], datum.Country) >= 0"},
+                {"calculate": "datum.highest_rating - datum.GM_rating_average", "as": "RatingDifference"}
+            ],
+            "encoding": {
+                "x": {"field": "Country", "type": "nominal"},
+                "y": {"field": "GM_rating_average", "type": "quantitative"},
+                "y2": {"field": "highest_rating", "type": "quantitative"},
+                "text": {"field": "RatingDifference", "type": "quantitative"},
+                "tooltip": [
+                    {"field": "Country", "type": "nominal", "title": "Country"},
+                    {"field": "RatingDifference", "type": "quantitative", "title": "Rating Difference"}
+                ]
+            }
+        }
+    ]
+}
